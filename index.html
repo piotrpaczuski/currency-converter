@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/form.css">
+    <script defer src="JS/script.js"></script>
+    <title>Kalkulator Walut</title>
+</head>
+
+<body class="body">
+
+    <form class="form">
+        <p class="form__paragraph">Kalkulator walut</p>
+        <fieldset class="form__fieldset">
+            <legend class="form__legend">Uzupełnij dane</legend>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">Posiadana kwota: </span>
+                    <input class="form__input js-inputAmount" type="number" step="0.01" required />
+                </label>
+            </p>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">Posiadania waluta:</span>
+                    <select class="form__input js-inputCurrency">
+                        <option value="PLN" selected>PLN</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">Wymagana waluta:</span>
+                    <select class="form__input js-outputCurrency">
+                        <option value="PLN">PLN</option>
+                        <option value="EUR" selected>EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label class="form__label">
+                    <span class="form__labelText">Obecny kurs:* </span><input
+                        class="form__input form__input--noneBorder js-currentRate" type="text" readonly>
+                </label>
+            </p>
+            <p>
+                <button class="form__button js-button">Oblicz</button>
+            </p>
+            <p class="form__result">Przeliczona kwota wynosi: <span
+                    class="form__span section__span js-value">N/N</span><span class="js-currency"></span></p>
+            <p class="form__note">*Wyświetlany kurs jest z dnia 20.10.2022</p>
+        </fieldset>
+    </form>
+    <footer class="footer">
+        &copy; Copyright 2022 Wszelkie prawa zastrzeżone.
+    </footer>
+
+</body>
+
+</html>
