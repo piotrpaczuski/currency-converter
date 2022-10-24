@@ -18,19 +18,19 @@
         if (writeInputCurrency().value === writeOutputCurrency().value) {
             return currentRateElement.value = "Wybrałeś te same waluty!"
         }
-        else if (writeInputCurrency().value === "PLN" && (writeOutputCurrency().value === "EUR" || writeOutputCurrency().value === "USD")) {
+        if (writeInputCurrency().value === "PLN" && (writeOutputCurrency().value === "EUR" || writeOutputCurrency().value === "USD")) {
             return currentRateElement.value = "Obecny kurs wynosi: 0.21";
         }
-        else if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "PLN") {
+        if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "PLN") {
             return currentRateElement.value = "Obecny kurs wynosi: 4.77";
         }
-        else if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "USD") {
+        if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "USD") {
             return currentRateElement.value = "Obecny kurs wynosi: 0.98";
         }
-        else if (writeInputCurrency().value === "USD" && writeOutputCurrency().value === "PLN") {
+        if (writeInputCurrency().value === "USD" && writeOutputCurrency().value === "PLN") {
             return currentRateElement.value = "Obecny kurs wynosi: 4.88";
         }
-        else if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "PLN") {
+        if (writeInputCurrency().value === "USD" && writeOutputCurrency().value === "EUR") {
             return currentRateElement.value = "Obecny kurs wynosi: 1.02";
         }
     }
