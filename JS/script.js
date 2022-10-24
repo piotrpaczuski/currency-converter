@@ -13,7 +13,8 @@
     }
 
     const writeValueCurrentRate = () => {
-        const currentRateElement = document.querySelector(".js-currentRate")
+        const currentRateElement = document.querySelector(".js-currentRate");
+        
         if (writeInputCurrency().value === writeOutputCurrency().value) {
             return currentRateElement.value = "Wybrałeś te same waluty!"
         }
@@ -66,10 +67,12 @@
         }
     }
 
-    const onButtonClick = () => {
-        const buttonElement = document.querySelector(".js-button");
+    const writeButton = () => {
+        return buttonElement = document.querySelector(".js-button");
+    }
 
-        buttonElement.addEventListener("click", (event) => {
+    const onButtonClick = () => {
+        writeButton().addEventListener("click", (event) => {
             event.preventDefault();
             const valueElement = document.querySelector(".js-value");
             const valueCurrencyElement = document.querySelector(".js-currency");
