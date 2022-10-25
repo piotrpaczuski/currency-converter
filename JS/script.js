@@ -12,27 +12,13 @@
         writeOutputCurrency().addEventListener("change", showCurrentRate);
     }
 
-    const writeValueCurrentRate = () => {
+    const writeValueCurrentRate = (rate) => {
         const currentRateElement = document.querySelector(".js-currentRate");
         
         if (writeInputCurrency().value === writeOutputCurrency().value) {
-            return currentRateElement.value = "Wybrałeś te same waluty!"
+            return currentRateElement.value = rate;
         }
-        if (writeInputCurrency().value === "PLN" && (writeOutputCurrency().value === "EUR" || writeOutputCurrency().value === "USD")) {
-            return currentRateElement.value = "Obecny kurs wynosi: 0.21";
-        }
-        if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "PLN") {
-            return currentRateElement.value = "Obecny kurs wynosi: 4.77";
-        }
-        if (writeInputCurrency().value === "EUR" && writeOutputCurrency().value === "USD") {
-            return currentRateElement.value = "Obecny kurs wynosi: 0.98";
-        }
-        if (writeInputCurrency().value === "USD" && writeOutputCurrency().value === "PLN") {
-            return currentRateElement.value = "Obecny kurs wynosi: 4.88";
-        }
-        if (writeInputCurrency().value === "USD" && writeOutputCurrency().value === "EUR") {
-            return currentRateElement.value = "Obecny kurs wynosi: 1.02";
-        }
+        return currentRateElement.value = rate;
     }
 
     const showCurrentRate = () => {
@@ -40,29 +26,29 @@
             case "PLN":
                 switch (writeOutputCurrency().value) {
                     case "PLN":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Wybrałeś te same waluty!");
                     case "EUR":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Obecny kurs wynosi: 0.21");
                     case "USD":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Obecny kurs wynosi: 0.21");
                 }
             case "EUR":
                 switch (writeOutputCurrency().value) {
                     case "PLN":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Obecny kurs wynosi: 4.77");
                     case "EUR":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Wybrałeś te same waluty!");
                     case "USD":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Obecny kurs wynosi: 0.98");
                 }
             case "USD":
                 switch (writeOutputCurrency().value) {
                     case "PLN":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Obecny kurs wynosi: 4.88");
                     case "EUR":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Obecny kurs wynosi: 1.02");
                     case "USD":
-                        return writeValueCurrentRate();
+                        return writeValueCurrentRate("Wybrałeś te same waluty!");
                 }
         }
     }
@@ -71,49 +57,46 @@
         return buttonElement = document.querySelector(".js-button");
     }
 
+    const calculateCurrency = (rate, value) => {
+        const valueElement = document.querySelector(".js-value");
+        const valueCurrencyElement = document.querySelector(".js-currency");
+        const valueOfAmountElement = parseFloat(document.querySelector(".js-inputAmount").value).toFixed(2);
+
+        valueElement.innerHTML = (valueOfAmountElement * rate).toFixed(2);
+        return valueCurrencyElement.innerHTML = value;
+    }
+
     const onButtonClick = () => {
         writeButton().addEventListener("click", (event) => {
             event.preventDefault();
-            const valueElement = document.querySelector(".js-value");
-            const valueCurrencyElement = document.querySelector(".js-currency");
-            const valueOfAmountElement = parseFloat(document.querySelector(".js-inputAmount").value).toFixed(2);
 
             switch (writeInputCurrency().value) {
                 case "PLN":
                     switch (writeOutputCurrency().value) {
                         case "PLN":
-                            valueElement.innerHTML = valueOfAmountElement;
-                            return valueCurrencyElement.innerHTML = " PLN";
+                            return calculateCurrency(1, " PLN");
                         case "EUR":
-                            valueElement.innerHTML = (valueOfAmountElement * 0.21).toFixed(2);
-                            return valueCurrencyElement.innerHTML = " EUR";
+                            return calculateCurrency(0.21, " EUR");
                         case "USD":
-                            valueElement.innerHTML = (valueOfAmountElement * 0.21).toFixed(2);
-                            return valueCurrencyElement.innerHTML = " USD";
+                            return calculateCurrency(0.21, " USD");
                     }
                 case "EUR":
                     switch (writeOutputCurrency().value) {
                         case "PLN":
-                            valueElement.innerHTML = (valueOfAmountElement * 4.77).toFixed(2);
-                            return valueCurrencyElement.innerHTML = " PLN";
+                            return calculateCurrency(4.77, " PLN");
                         case "EUR":
-                            valueElement.innerHTML = valueOfAmountElement;
-                            return valueCurrencyElement.innerHTML = " EUR";
+                            return calculateCurrency(1, " EUR");
                         case "USD":
-                            valueElement.innerHTML = (valueOfAmountElement * 0.98).toFixed(2);
-                            return valueCurrencyElement.innerHTML = " USD";
+                            return calculateCurrency(0.98, " USD");
                     }
                 case "USD":
                     switch (writeOutputCurrency().value) {
                         case "PLN":
-                            valueElement.innerHTML = (valueOfAmountElement * 4.88).toFixed(2);
-                            return valueCurrencyElement.innerHTML = " PLN";
+                            return calculateCurrency(4.88, " PLN");
                         case "EUR":
-                            valueElement.innerHTML = (valueOfAmountElement * 1.02).toFixed(2);
-                            return valueCurrencyElement.innerHTML = " EUR";
+                            return calculateCurrency(1.02, " EUR");
                         case "USD":
-                            valueElement.innerHTML = valueOfAmountElement;
-                            return valueCurrencyElement.innerHTML = " USD";
+                            return calculateCurrency(1, " USD");
                     }
             }
         });
